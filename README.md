@@ -16,7 +16,7 @@ According to me Time complextity of this code is
 - Average Time Complexity: O(n log n + nm^2)
 - Worst Time Complexity: O(n log n + nm^2)
 
-Code Execution Flow
+## Code Execution Flow
 - Reading and storing the words from standard input.
 - Sorting the words based on length and lexicographical order.
 - Iterating through the sorted words and checking for compound word possibilities.
