@@ -4,28 +4,22 @@ using namespace std::chrono;
 using namespace std;
 
 // Function to compare two strings based on length and lexicographical order
-bool compareStrings(string &a, string &b)
-{
-    if (a.size() == b.size())
-    {
+bool compareStrings(string &a, string &b){
+    if (a.size() == b.size()){
         return a < b;
-    }
-    else
-    {
+    }else{
         return a.size() < b.size();
     }
 }
 
 // Function to find the longest and second longest compound words
-void findLongestCompoundWords()
-{
+void findLongestCompoundWords(){
     vector<string> words;
     string currentWord;
     unordered_set<string> wordSet;
 
     // Read words from standard input and store them in a vector and a set
-    while (cin >> currentWord)
-    {
+    while (cin >> currentWord){
         words.push_back(currentWord);
         wordSet.insert(currentWord);
     }
@@ -39,27 +33,21 @@ void findLongestCompoundWords()
     int currentIndex = words.size() - 1;
     vector<bool> isCompound(1001);
     // Loop through the sorted words to find the longest and second longest compound words
-    while (currentIndex >= 0)
-    {
+    while (currentIndex >= 0){
         string &currentWord = words[currentIndex--]; // Get the current word
         int wordLength = currentWord.size();
         string temp;
         fill(isCompound.begin(), isCompound.end(), false);
         // Check for compound word possibilities by iterating over word substrings
-        for (int i = 0; i < wordLength; i++)
-        {
+        for (int i = 0; i < wordLength; i++){
             temp = "";
-            for (int j = 0; j <= i; j++)
-            {
-                if (wordSet.count(currentWord.substr(j, i - j + 1)))
-                {
-                    if (j == 0 && i != wordLength - 1)
-                    {
+            for (int j = 0; j <= i; j++){
+                if (wordSet.count(currentWord.substr(j, i - j + 1))){
+                    if (j == 0 && i != wordLength - 1){
                         isCompound[i] = true;
                         break;
                     }
-                    else if (j > 0 && isCompound[j - 1])
-                    {
+                    else if (j > 0 && isCompound[j - 1]){
                         isCompound[i] = true;
                         break;
                     }
